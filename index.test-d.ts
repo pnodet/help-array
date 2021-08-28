@@ -1,4 +1,4 @@
 import {expectType} from 'tsd';
-import main from './index.js';
+import * as helpArray from './index.js';
 
-expectType<boolean>(main('hello'));
+expectType<any[]>(helpArray.append([1, 2], 'hello'));

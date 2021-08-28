@@ -1,7 +1,14 @@
 import test from 'ava';
-import main from './index.js';
+import * as helpArray from './index.js';
 
-test('main()', (t) => {
-	t.is(main('hello'), true);
-	t.is(main(223), false);
+const isString = (element) => typeof element === 'string';
+
+test('all()', (t) => {
+	t.is(helpArray.all(['1', '2'], isString), true);
+	t.is(helpArray.all([1, 2], isString), false);
+});
+
+test('allEqual', (t) => {
+	t.is(helpArray.allEqual([2, 2, 2]), true);
+	t.is(helpArray.allEqual([1, 2, 3]), false);
 });

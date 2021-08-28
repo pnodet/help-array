@@ -1,13 +1,13 @@
 {
-  "name": "small-package-template",
-  "version": "1.1.1",
+  "name": "help-array",
+  "version": "1.0.0",
   "description": "Small template to quickly create npm packages",
   "scripts": {
     "test": "xo && ava && tsd"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pnxdxt/package-template.git"
+    "url": "git+https://github.com/pnxdxt/help-array.git"
   },
   "type": "module",
   "exports": "./index.js",
@@ -25,9 +25,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pnxdxt/package-template/issues"
+    "url": "https://github.com/pnxdxt/help-array/issues"
   },
-  "homepage": "https://github.com/pnxdxt/package-template#readme",
+  "homepage": "https://github.com/pnxdxt/help-array#readme",
   "devDependencies": {
     "ava": "^3.15.0",
     "tsd": "^0.17.0",
