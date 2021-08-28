@@ -4,8 +4,8 @@
 	"description": "Small js functions to help dealing with array",
 	"scripts": {
 		"lint": "xo --fix",
-		"test": "xo && ava --verbose && tsd",
-		"watch:test": "ava --verbose --watch"
+		"test": "xo && ava && tsd",
+		"watch:test": "ava --watch"
 	},
 	"repository": {
 		"type": "git",
