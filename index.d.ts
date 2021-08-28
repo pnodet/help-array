@@ -1,19 +1,19 @@
 /**
- * Returns true if the predicate function returns true for all elements in a collection and false otherwise
+ * Returns true if the predicate function returns true for all elements in a collection and false otherwise.
  * @param {Array} array
  * @param {Function} fn
  */
 export function all(array: any[], fn: () => boolean): boolean;
 
 /**
- * Checks whether all elements of the array are equal
+ * Checks whether all elements of the array are equal.
  * @param {Array} array
  * @return {Boolean}
  */
 export function allEqual(array: any[]): boolean;
 
 /**
- * Append value into array
+ * Append value into array.
  * @param {Array} array - The array
  * @param {*} value
  * @returns {Array}
@@ -21,7 +21,7 @@ export function allEqual(array: any[]): boolean;
 export function append(array: any[], value: any): any[];
 
 /**
- * Prepend value into array
+ * Prepend value into array.
  * @param {Array} array - The array
  * @param {*} value
  * @returns {Array}
@@ -29,28 +29,28 @@ export function append(array: any[], value: any): any[];
 export function prepend(array: any[], value: any): any[];
 
 /**
- * Returns the average of two or more numerical values
+ * Returns the average of two or more numerical values.
  * @param {...Number} nums
  * @returns {Number}
  */
 export function average(...nums: number[]): number;
 
 /**
- * Converts a non-array value into array
+ * Converts a non-array value into array.
  * @param {*} value
  * @returns {Array}
  */
 export function cast(value: any): any[];
 
 /**
- * Removes false values from an array
+ * Removes false values from an array.
  * @param {Array} array - The array
  * @returns {Array} A new array without false values
  */
 export function compact(array: any[]): any[];
 
 /**
- * Counts the occurrences of a value in an array
+ * Counts the occurrences of a value in an array.
  * @param {Array} array - The array
  * @param {any} value - value
  * @returns {Number} Number of occurrences
@@ -69,7 +69,7 @@ export function countOccurrences(array: any[], value: any): number;
 export function fromEntries(pairs: any[]): Record<string, unknown>;
 
 /**
- * Flattens an array up to a specified depth using recursion
+ * Flattens an array up to a specified depth using recursion.
  * @param {Array} array - The array
  * @param {Number} [depth=1]
  * @returns {Array} A new array with duplicates removed
@@ -77,7 +77,7 @@ export function fromEntries(pairs: any[]): Record<string, unknown>;
 export function flatten(array: any[], depth?: number): any[];
 
 /**
- * Flattens an array recursively
+ * Flattens an array recursively.
  * @param {Array} array - The array
  * @returns {Array} A new array
  */
@@ -136,14 +136,24 @@ export function last(array: any[]): any;
 export function tail(array: any[]): any[];
 
 /**
- * Pick a random item in an array
- * @param  {Array} array - The array
- * @returns {*} A randomly selected value
+ * Creates an array of values by running each element of `array` thru `iteratee`.
+ * The iteratee is invoked with three arguments: (value, index, array).
+ * @param {Array} array The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n
+ * }
+ *
+ * helpArray.map([4, 8], square)
+ * // => [16, 64]
  */
-export function random(array: any[]): any;
+export function map(array: any[], iteratee: Function): any[];
 
 /**
- * Remove an item of an array
+ * Remove an item of an array.
  * @param {Array} array - The array
  * @param {*} elem - The array
  */
@@ -161,7 +171,7 @@ export function remove(array: any[], element: any): void;
 export function sample(array: any[]): any;
 
 /**
- * Randomly shuffle an array
+ * Randomly shuffle an array.
  * https://stackoverflow.com/a/2450976/1293256
  * @param {Array} array - The array to shuffle
  * @returns {Array} The shuffled array
@@ -169,7 +179,7 @@ export function sample(array: any[]): any;
 export function shuffle(array: any[]): any[];
 
 /**
- * Return an array of elements that appear in two arrays
+ * Return an array of elements that appear in two arrays.
  * @param {Array} array
  * @param {Array} values
  */
@@ -193,7 +203,7 @@ export function similarity(array: any[], values: any[]): any[];
 export function slice(array: any[], start?: number, stop?: number): any[];
 
 /**
- * Sort array by a category
+ * Sort array by a category.
  * @param {Array} array - The array
  * @param {Any} p - parameter
  * @returns {Array}
@@ -201,7 +211,7 @@ export function slice(array: any[], start?: number, stop?: number): any[];
 export function sortBy(array: any[], p: any): any[];
 
 /**
- * Split an array into chunks.
+ * 
  * @param {Array} array - The array
  * @param {Number} [limit=1]
  * @returns {*[]}
@@ -209,14 +219,14 @@ export function sortBy(array: any[], p: any): any[];
 export function toChunks(array: any[], limit?: number): any[];
 
 /**
- * Converts the elements that don’t have commas or double quotes to strings with comma-separated values
+ * Converts the elements that don’t have commas or double quotes to strings with comma-separated values.
  * @param {Array} array
  * @param {String} [delimiter=',']
  */
 export function toCSV(array: any[], delimiter?: string): string;
 
 /**
- * Remove duplicate items from an array
+ * Remove duplicate items from an array.
  * @param {Array} array - The array
  * @returns {Array} A new array with duplicates removed
  */

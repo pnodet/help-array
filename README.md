@@ -39,5 +39,59 @@ helpArray.all(['1', '2', '3'], (element) => typeof element === 'string');
 //=> true
 ```
 
+## Functions
+
+all : Returns true if the predicate function returns true for all elements in a collection and false otherwise.
+
+allEqual : Checks whether all elements of the array are equal.
+
+append : Append value into array.
+
+prepend : Prepend value into array.
+
+average : Returns the average of two or more numerical values.
+
+cast : Converts a non-array value into array.
+
+compact : Removes false values from an array.
+
+countOccurrences : Counts the occurrences of a value in an array.
+
+fromEntries : Returns an object composed from key-value `pairs`.
+
+flatten : Flattens an array up to a specified depth using recursion.
+
+deepFlatten : Flattens an array recursively.
+
+groupMap : Group items by common key and return an object of items grouped by key.
+
+group : Group items by common key and return an array of groups.
+
+head : Gets the first element of `array`.
+
+last : Gets the last element of `array`.
+
+tail : Gets all but the first element of `array`.
+
+map : Creates an array of values by running each element of `array` thru `iteratee`.
+
+remove : Remove an item of an array.
+
+sample : Gets a random element from `array`.
+
+shuffle : Randomly shuffle an array.
+
+similarity : Return an array of elements that appear in two arrays.
+
+slice : Creates a slice of `array` from `start` up to, but not including, `end`.
+
+sortBy : Sort array by a category.
+
+toChunks : Split an array into chunks.
+
+toCSV : Converts the elements that don’t have commas or double quotes to strings with comma-separated values.
+
+unDuplicate : Remove duplicate items from an array.
+
 ## License
 MIT © [Paul Nodet](https://pnodet.com)

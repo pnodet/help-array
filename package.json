@@ -37,5 +37,6 @@
   "xo": {
     "singleQuote": true,
     "prettier": true
-  }
+  },
+  "keywords": ["helper", "small", "array"]
 }

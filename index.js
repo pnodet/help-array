@@ -75,8 +75,16 @@ export function tail(array) {
 	return result;
 }
 
-export const random = (array) =>
-	array[Math.floor(Math.random() * array.length)];
+export function map(array, iteratee) {
+	let index = -1;
+	const length = array == null ? 0 : array.length;
+	const result = new Array(length);
+
+	while (++index < length) {
+		result[index] = iteratee(array[index], index, array);
+	}
+	return result;
+}
 
 export const remove = (array, element) => {
 	if (!array) return;
