@@ -15,10 +15,10 @@ export const average = (...nums) =>
 
 export const cast = (value) => (Array.isArray(value) ? value : [value]);
 
+export const compact = (array) => array.filter(Boolean);
+
 export const countOccurrences = (array, value) =>
 	array.reduce((a, v) => (v === value ? a + 1 : a), 0);
-
-export const compact = (array) => array.filter(Boolean);
 
 export function fromEntries(pairs) {
 	const result = {};
