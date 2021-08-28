@@ -80,7 +80,7 @@ test('group()', (t) => {
 	t.is(helpArray.group());
 	t.is(helpArray.group());
 });
-*/
+	*/
 
 test('head()', (t) => {
 	t.is(helpArray.head([1, 2, 3]), 1);
@@ -162,4 +162,4 @@ test('unDuplicate()', (t) => {
 	t.is(helpArray.unDuplicate());
 	t.is(helpArray.unDuplicate());
 });
-//*/
+	*/
