@@ -1,9 +1,9 @@
 {
   "name": "help-array",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small template to quickly create npm packages",
   "scripts": {
-    "lint": "xo --fix", 
+    "lint": "xo --fix",
     "test": "xo && ava && tsd"
   },
   "repository": {
@@ -38,5 +38,9 @@
     "singleQuote": true,
     "prettier": true
   },
-  "keywords": ["helper", "small", "array"]
+  "keywords": [
+    "helper",
+    "small",
+    "array"
+  ]
 }
