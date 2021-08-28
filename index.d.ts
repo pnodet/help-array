@@ -150,7 +150,7 @@ export function tail(array: any[]): any[];
  * helpArray.map([4, 8], square)
  * // => [16, 64]
  */
-export function map(array: any[], iteratee: Function): any[];
+export function map(array: any[], iteratee: () => any): any[];
 
 /**
  * Remove an item of an array.
@@ -211,7 +211,7 @@ export function slice(array: any[], start?: number, stop?: number): any[];
 export function sortBy(array: any[], p: any): any[];
 
 /**
- * 
+ *
  * @param {Array} array - The array
  * @param {Number} [limit=1]
  * @returns {*[]}
