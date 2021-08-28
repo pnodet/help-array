@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Small template to quickly create npm packages",
   "scripts": {
+    "lint": "xo --fix", 
     "test": "xo && ava && tsd"
   },
   "repository": {
