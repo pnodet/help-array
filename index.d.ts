@@ -155,6 +155,15 @@ export function map(array: any[], iteratee: () => any): any[];
 /**
  * Remove an item of an array.
  * @param {Array} array - The array
+ * @param {number} index - The array
+ * @param {number} offset - The array
+ * @returns {Array} A new array
+ */
+export function moveBy(array: any[], index: number, offset: number): any[];
+
+/**
+ * Remove an item of an array.
+ * @param {Array} array - The array
  * @param {*} elem - The array
  */
 export function remove(array: any[], element: any): void;

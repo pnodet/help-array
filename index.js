@@ -87,6 +87,18 @@ export function map(array, iteratee) {
 	return result;
 }
 
+export const moveBy = (array, index, offset) => {
+	if (!array) return;
+	const result = [...array];
+	if (index === index + offset) return result;
+	if (index + offset < 0 || index + offset > array.length) {
+		throw console.error(`error : Offset too high`);
+	}
+
+	result.splice(index + offset, 0, result.splice(index, 1)[0]);
+	return result;
+};
+
 export const remove = (array, element) => {
 	if (!array) return;
 	const idx = array.indexOf(element);

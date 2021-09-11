@@ -58,7 +58,7 @@ test('fromEntries()', (t) => {
 
 test('flatten()', (t) => {
 	t.deepEqual(helpArray.flatten([1, 2, [3]]), [1, 2, 3]);
-	t.deepEqual(helpArray.flatten([1, 2, [3, [4, 5]]]), [1, 2, 3, [4, 5]]);
+	t.deepEqual(helpArray.flatten(, [1, 2, 3, [4, 5]]);
 	t.deepEqual(helpArray.flatten([1, 2, [3, [4, 5]]], 2), [1, 2, 3, 4, 5]);
 });
 
