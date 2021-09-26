@@ -4,7 +4,8 @@
 	"description": "Small js functions to help dealing with array",
 	"scripts": {
 		"lint": "xo --fix",
-		"test": "xo && ava && tsd",
+		"fix": "xo --fix",
+		"test": "ava && tsd",
 		"watch:test": "ava --watch"
 	},
 	"repository": {
@@ -33,17 +34,12 @@
 	"devDependencies": {
 		"ava": "^3.15.0",
 		"tsd": "^0.17.0",
-		"xo": "^0.44.0"
+		"xo": "^0.44.0",
+		"prettier-config-xo": "^2.0.0"
 	},
+	"prettier": "prettier-config-xo",
 	"xo": {
-		"singleQuote": true,
 		"prettier": true
-	},
-	"prettier": {
-		"trailingComma": "all",
-		"singleQuote": true,
-		"bracketSpacing": false,
-		"jsxBracketSameLine": false
 	},
 	"keywords": [
 		"helper",

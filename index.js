@@ -1,8 +1,8 @@
 /* eslint-disable unicorn/no-array-reduce, unicorn/prefer-spread */
 
-export const all = (array, fn) => array.every((value) => fn(value));
+export const all = (array, fn) => array.every(value => fn(value));
 
-export const allEqual = (array) => array.every((value) => value === array[0]);
+export const allEqual = array => array.every(value => value === array[0]);
 
 export const append = (array, value) =>
 	array ? (array.push(value), array) : [value];
@@ -13,9 +13,9 @@ export const prepend = (array, value) =>
 export const average = (...nums) =>
 	nums.reduce((acc, value) => acc + value, 0) / nums.length;
 
-export const cast = (value) => (Array.isArray(value) ? value : [value]);
+export const cast = value => (Array.isArray(value) ? value : [value]);
 
-export const compact = (array) => array.filter(Boolean);
+export const compact = array => array.filter(Boolean);
 
 export const countOccurrences = (array, value) =>
 	array.reduce((a, v) => (v === value ? a + 1 : a), 0);
@@ -40,8 +40,8 @@ export const flatten = (array, depth = 1) =>
 		[],
 	);
 
-export const deepFlatten = (array) =>
-	array.flatMap((v) => (Array.isArray(v) ? deepFlatten(v) : v));
+export const deepFlatten = array =>
+	array.flatMap(v => (Array.isArray(v) ? deepFlatten(v) : v));
 
 export const groupMap = (array, fn) => {
 	const out = {};
@@ -111,7 +111,7 @@ export function sample(array) {
 	return length ? array[Math.floor(Math.random() * length)] : undefined;
 }
 
-export const shuffle = (array) => {
+export const shuffle = array => {
 	let currentIndex = array.length;
 	let temporaryValue;
 	let randomIndex;
@@ -132,7 +132,7 @@ export const shuffle = (array) => {
 };
 
 export const similarity = (array, values) =>
-	array.filter((v) => values.includes(v));
+	array.filter(v => values.includes(v));
 
 export function slice(array, start, stop) {
 	let length = array === null ? 0 : array.length;
@@ -181,6 +181,6 @@ export const toChunks = (array, limit = 1) => {
 };
 
 export const toCSV = (array, delimiter = ',') =>
-	array.map((v) => v.map((x) => `"${x}"`).join(delimiter)).join('\n');
+	array.map(v => v.map(x => `"${x}"`).join(delimiter)).join('\n');
 
-export const unDuplicate = (array) => [...new Set(array)];
+export const unDuplicate = array => [...new Set(array)];
