@@ -3,7 +3,7 @@
 	"version": "1.1.0",
 	"description": "Small js functions to help dealing with array",
 	"scripts": {
-		"lint": "xo --fix",
+		"lint": "xo",
 		"fix": "xo --fix",
 		"test": "ava && tsd",
 		"watch:test": "ava --watch"
@@ -33,9 +33,10 @@
 	"homepage": "https://github.com/pnxdxt/help-array#readme",
 	"devDependencies": {
 		"ava": "^3.15.0",
+		"eslint": "^7.32.0",
+		"prettier-config-xo": "^2.0.0",
 		"tsd": "^0.17.0",
-		"xo": "^0.44.0",
-		"prettier-config-xo": "^2.0.0"
+		"xo": "^0.44.0"
 	},
 	"prettier": "prettier-config-xo",
 	"xo": {
