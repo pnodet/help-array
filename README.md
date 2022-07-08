@@ -1,4 +1,5 @@
 # help-array
+
 > TS package to help dealing with array
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
@@ -7,9 +8,11 @@
 [![npm downloads](https://img.shields.io/npm/dt/help-array)](https://www.npmjs.com/package/help-array)
 
 ## Install
+
 ```
 $ npm install help-array
 ```
+
 ## Import
 
 This package is pure [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). It cannot be `require()`'d from CommonJS.
@@ -23,19 +26,19 @@ import * as helpArray from 'help-array';
 // Load by method
 import {all} from 'help-array';
 ```
+
 If the package is used in an async context, you could use [`await import(…)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) from CommonJS instead of `require(…)`.
 
 **You also need to make sure you're on the latest minor version of Node.js. At minimum Node.js 12.20, 14.14, or 16.0.**
 
 Read more here: [sindresorhus/esm-package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 
-
 ## Usage
 
 ```js
 import {all} from 'help-array';
 
-helpArray.all([1,2,3], (element) => typeof element === 'string');
+helpArray.all([1, 2, 3], (element) => typeof element === 'string');
 //=> false
 
 helpArray.all(['1', '2', '3'], (element) => typeof element === 'string');
@@ -66,7 +69,7 @@ helpArray.all(['1', '2', '3'], (element) => typeof element === 'string');
 
 `deepFlatten` : Flattens an array recursively.
 
-`groupMap` : Group items by common key and return an object of items grouped by key.
+`groupMap` : Group items by common key and return an map of items grouped by key.
 
 `group` : Group items by common key and return an array of groups.
 
