@@ -1,7 +1,7 @@
 {
 	"name": "@pnxdxt/help-array",
 	"version": "0.0.1",
-	"description": "JS / TS package to help dealing with array",
+	"description": "TS package to help dealing with array",
 	"main": "dist/index.js",
 	"module": "./dist/index.mjs",
 	"typings": "dist/index.d.ts",
