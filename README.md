@@ -1,14 +1,14 @@
-# @pnxdxt/help-array
+# help-array
 > TS package to help dealing with array
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 [![GitHub workflow status](https://img.shields.io/github/workflow/status/pnxdxt/help-array/CI)](https://github.com/pnxdxt/help-array)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/@pnxdxt/help-array)](https://bundlephobia.com/package/@pnxdxt/help-array)
-[![npm downloads](https://img.shields.io/npm/dt/@pnxdxt/help-array)](https://www.npmjs.com/package/@pnxdxt/help-array)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/help-array)](https://bundlephobia.com/package/help-array)
+[![npm downloads](https://img.shields.io/npm/dt/help-array)](https://www.npmjs.com/package/help-array)
 
 ## Install
 ```
-$ npm install @pnxdxt/help-array
+$ npm install help-array
 ```
 ## Import
 
@@ -18,10 +18,10 @@ Use `import foo from 'foo'` instead of `const foo = require('foo')` to import th
 
 ```js
 // Load entire build
-import * as helpArray from '@pnxdxt/help-array';
+import * as helpArray from 'help-array';
 
 // Load by method
-import {all} from '@pnxdxt/help-array';
+import {all} from 'help-array';
 ```
 If the package is used in an async context, you could use [`await import(…)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) from CommonJS instead of `require(…)`.
 
@@ -33,7 +33,7 @@ Read more here: [sindresorhus/esm-package](https://gist.github.com/sindresorhus/
 ## Usage
 
 ```js
-import {all} from '@pnxdxt/help-array';
+import {all} from 'help-array';
 
 helpArray.all([1,2,3], (element) => typeof element === 'string');
 //=> false

@@ -1,5 +1,5 @@
 {
-	"name": "@pnxdxt/help-array",
+	"name": "help-array",
 	"version": "0.1.0",
 	"description": "TS package to help dealing with array",
 	"main": "dist/index.js",
