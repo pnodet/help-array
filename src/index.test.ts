@@ -1,154 +1,214 @@
+import {it, expect} from 'vitest';
 import * as helpArray from '.';
-import test from 'ava';
 
-const isString = (element: any) => typeof element === 'string';
-
-test('all()', (t) => {
-	t.true(helpArray.all(['1', '2'], isString));
-	t.false(helpArray.all([1, 2], isString));
+it('all()', () => {
+	const isString = (element: any) => typeof element === 'string';
+	expect(helpArray.all(['1', '2'], isString)).toBe(true);
+	expect(helpArray.all([1, 2], isString)).toBe(false);
 });
 
-test('allEqual', (t) => {
-	t.true(helpArray.allEqual([2, 2, 2]));
-	t.false(helpArray.allEqual([1, 2, 3]));
+it('allEqual', () => {
+	expect(helpArray.allEqual([2, 2, 2])).toBe(true);
+	expect(helpArray.allEqual([1, 2, 3])).toBe(false);
 });
 
-test('append()', (t) => {
-	t.deepEqual(helpArray.append([1, 2, 3], 4), [1, 2, 3, 4]);
-	t.notDeepEqual(helpArray.append([1, '2', 3], '4'), [1, 2, 3, 4]);
+it('append()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.append([], 4)).to.deep.equal([4]);
+	expect(helpArray.append([1, 2, 3], 4)).to.deep.equal(result);
+	expect(helpArray.append([1, '2', 3], '4')).to.not.deep.equal(result);
 });
 
-test('prepend()', (t) => {
-	t.deepEqual(helpArray.prepend([2, 3, 4], 1), [1, 2, 3, 4]);
-	t.notDeepEqual(helpArray.prepend(['2', 3, '4'], '1'), [1, 2, 3, 4]);
+it('prepend()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.prepend([2, 3, 4], 1)).to.deep.equal(result);
+	expect(helpArray.prepend(['2', 3, '4'], '1')).to.not.deep.equal(result);
 });
 
-test('average()', (t) => {
-	t.is(helpArray.average(2, 4, 6), 4);
+it('average()', () => {
+	expect(helpArray.average([2, 4, 6])).to.equal(4);
+	expect(helpArray.average([4, 6])).to.not.equal(4);
+});
+
+it('cast()', () => {
+	expect(helpArray.cast(2)).to.deep.equal([2]);
+	expect(helpArray.cast('hey')).to.deep.equal(['hey']);
 	// @ts-expect-error Test should fail
-	t.not(helpArray.average([2, 4, 6]), 4);
+	expect(helpArray.cast(2, 3)).to.not.deep.equal([2, 3]);
 });
 
-test('cast()', (t) => {
-	t.deepEqual(helpArray.cast(2), [2]);
-	// @ts-expect-error Test should fail
-	t.notDeepEqual(helpArray.cast(2, 3), [2, 3]);
+it('compact()', () => {
+	const result = [true, true];
+	expect(helpArray.compact([true, false, true])).to.deep.equal(result);
+	expect(helpArray.compact([true, null, true])).to.deep.equal(result);
+	expect(helpArray.compact([true, Number.NaN, true])).to.deep.equal(result);
+	expect(helpArray.compact([true, undefined, true])).to.deep.equal(result);
 });
 
-test('compact()', (t) => {
-	t.deepEqual(helpArray.compact([true, false, true]), [true, true]);
-	t.deepEqual(helpArray.compact([1, false, true]), [1, true]);
-	t.deepEqual(helpArray.compact([true, false, Number.NaN, true]), [true, true]);
-	t.deepEqual(helpArray.compact([true, undefined, true]), [true, true]);
+it('countOccurrences()', () => {
+	expect(helpArray.countOccurrences([1, 2, 3, 4, 5], 3)).to.equal(1);
+	expect(helpArray.countOccurrences([1, 2, 3, 3, 4], 3)).to.equal(2);
 });
 
-test('countOccurrences()', (t) => {
-	t.is(helpArray.countOccurrences([1, 2, 3, 4, 5], 3), 1);
-	t.is(helpArray.countOccurrences([1, 2, 3, 3, 4], 3), 2);
-});
-
-test('fromEntries()', (t) => {
-	t.deepEqual(
+it('fromEntries()', () => {
+	expect(
 		helpArray.fromEntries([
 			['a', 1],
 			['b', 2],
-		]),
-		{a: 1, b: 2}
+		])
+	).to.deep.equal({a: 1, b: 2});
+});
+
+it('flatten()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.flatten([1, 2, [3, 4]])).to.deep.equal(result);
+	expect(helpArray.flatten([1, 2, [3, [4]]])).to.not.deep.equal(result);
+	expect(helpArray.flatten([1, 2, [3, [4]]], 2)).to.deep.equal(result);
+});
+
+it('deepFlatten()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.deepFlatten([1, 2, [3, 4]])).to.deep.equal(result);
+	expect(helpArray.deepFlatten([1, 2, [3, [4]]])).to.deep.equal(result);
+});
+
+it('groupMap()', () => {
+	const testParameter = [
+		{age: 18, name: 'Jack'},
+		{age: 20, name: 'Peter'},
+		{age: 18, name: 'Gill'},
+	];
+
+	const result = new Map();
+	result.set(18, [
+		{age: 18, name: 'Jack'},
+		{age: 18, name: 'Gill'},
+	]);
+	result.set(20, [{age: 20, name: 'Peter'}]);
+	expect(helpArray.groupMap(testParameter, 'age')).to.deep.equal(result);
+});
+
+it('group()', () => {
+	const testParameter = [
+		{age: 18, name: 'Jack'},
+		{age: 20, name: 'Peter'},
+		{age: 18, name: 'Gill'},
+	];
+
+	const result = {
+		'18': [
+			{age: 18, name: 'Jack'},
+			{age: 18, name: 'Gill'},
+		],
+		'20': [{age: 20, name: 'Peter'}],
+	};
+
+	expect(helpArray.group(testParameter, (v) => v.age.toString())).to.deep.equal(
+		result
 	);
 });
 
-test('flatten()', (t) => {
-	t.deepEqual(helpArray.flatten([1, 2, [3]]), [1, 2, 3]);
-	t.deepEqual(helpArray.flatten([1, 2, [3, [4, 5]]], 2), [1, 2, 3, 4, 5]);
+it('sortBy()', () => {
+	const testParameter = [
+		{age: 18, name: 'Jack'},
+		{age: 20, name: 'Peter'},
+		{age: 19, name: 'Gill'},
+	];
+
+	const result = [
+		{age: 18, name: 'Jack'},
+		{age: 19, name: 'Gill'},
+		{age: 20, name: 'Peter'},
+	];
+
+	expect(helpArray.sortBy(testParameter, 'age')).to.deep.equal(result);
 });
 
-test('deepFlatten()', (t) => {
-	t.deepEqual(helpArray.deepFlatten([1, 2, [3]]), [1, 2, 3]);
-	t.deepEqual(helpArray.flatten([1, 2, [3, [4, 5]]], 2), [1, 2, 3, 4, 5]);
-	t.notDeepEqual(helpArray.deepFlatten([1, 2, [3, [4, 5]]]), [1, 2, 3, [4, 5]]);
+it('head()', () => {
+	expect(helpArray.head([1, 2, 3])).to.equal(1);
+	expect(helpArray.head(['1', 2, 3])).to.equal('1');
+	/* eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-confusing-void-expression */
+	expect(helpArray.head([])).to.be.undefined;
+});
+
+it('last()', () => {
+	expect(helpArray.last([3, 2, 1])).to.equal(1);
+	expect(helpArray.last([1, 2, '3'])).to.equal('3');
+	/* eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-confusing-void-expression */
+	expect(helpArray.last([])).to.be.undefined;
+});
+
+it('tail()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.tail([0, 1, 2, 3, 4])).to.deep.equal(result);
+});
+
+it('moveBy()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.moveBy([3, 1, 2, 4], 0, 2)).to.deep.equal(result);
+});
+
+it('remove()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.remove([1, 2, 0, 3, 4], 0)).to.deep.equal(result);
+	expect(helpArray.remove([0, 1, 2, 3, 4], 0)).to.deep.equal(result);
+});
+
+it('sum()', () => {
+	expect(helpArray.sum([1, 2, 3, 4])).to.deep.equal(10);
+	expect(helpArray.sum([1, 2, 3, 4, -2])).to.deep.equal(8);
+});
+
+it('sample()', () => {
+	const result = helpArray.sample([1, 2, 3, 4]);
+	expect([1, 2, 3, 4]).to.include(result);
+});
+
+it('toChunks()', () => {
+	expect(helpArray.toChunks([1, 2, 3, 4], 1)).to.deep.equal([
+		[1],
+		[2],
+		[3],
+		[4],
+	]);
+
+	expect(() => {
+		helpArray.toChunks([1, 2, 3, 4], 0);
+	}).to.throw('size value should be greater than 1');
+});
+
+it('unDuplicate()', () => {
+	const result = [1, 2, 3, 4];
+	expect(helpArray.unDuplicate([1, 2, 2, 3, 4])).to.deep.equal(result);
+	expect(helpArray.unDuplicate([1, 2, 3, 2, 4])).to.deep.equal(result);
+	expect(helpArray.unDuplicate([1, 2, 3, '1', 4])).to.not.deep.equal(result);
 });
 
 /**
 Not ready yet
 
-test('groupMap()', (t) => {
-	t.is(helpArray.groupMap());
-	t.is(helpArray.groupMap());
+it('shuffle()', () => {
+	it.is(helpArray.shuffle());
+	it.is(helpArray.shuffle());
 });
 
-test('group()', (t) => {
-	t.is(helpArray.group());
-	t.is(helpArray.group());
-});
-	*/
-
-test('head()', (t) => {
-	t.is(helpArray.head([1, 2, 3]), 1);
-	t.is(helpArray.head([]), undefined);
-	t.is(helpArray.head(['1', 2, 3]), '1');
+it('similarity()', () => {
+	it.is(helpArray.similarity());
+	it.is(helpArray.similarity());
 });
 
-test('last()', (t) => {
-	t.is(helpArray.last([1, 2, 3]), 3);
-	t.is(helpArray.last([]), undefined);
-	t.is(helpArray.last([1, 2, '3']), '3');
+it('slice()', () => {
+	it.is(helpArray.slice());
+	it.is(helpArray.slice());
 });
 
-test('tail()', (t) => {
-	t.deepEqual(helpArray.tail([1, 2, 3]), [2, 3]);
-	t.deepEqual(helpArray.tail([1, 2, '3']), [2, '3']);
+it('toCSV()', () => {
+	it.is(helpArray.toCSV());
+	it.is(helpArray.toCSV());
 });
 
-test('remove()', (t) => {
-	const array1 = [1, 2, 3, 4];
-	const result1 =	helpArray.remove(array1, 3);
-	t.deepEqual(result1, [1, 2, 4]);
-
-	const array2 = [1, 2, 3, 4, 3];
-	const result2 =helpArray.remove(array2, 3);
-	t.deepEqual(result2, [1, 2, 4, 3]);
-});
-
-/**
-Not ready yet
-
-test('sample()', (t) => {
-	t.is(helpArray.sample());
-	t.is(helpArray.sample());
-});
-
-test('shuffle()', (t) => {
-	t.is(helpArray.shuffle());
-	t.is(helpArray.shuffle());
-});
-
-test('similarity()', (t) => {
-	t.is(helpArray.similarity());
-	t.is(helpArray.similarity());
-});
-
-test('slice()', (t) => {
-	t.is(helpArray.slice());
-	t.is(helpArray.slice());
-});
-
-test('sortBy()', (t) => {
-	t.is(helpArray.sortBy());
-	t.is(helpArray.sortBy());
-});
-
-test('toChunks()', (t) => {
-	t.is(helpArray.toChunks());
-	t.is(helpArray.toChunks());
-});
-
-test('toCSV()', (t) => {
-	t.is(helpArray.toCSV());
-	t.is(helpArray.toCSV());
-});
-
-test('unDuplicate()', (t) => {
-	t.is(helpArray.unDuplicate());
-	t.is(helpArray.unDuplicate());
+it('unDuplicate()', () => {
+	it.is(helpArray.unDuplicate());
+	it.is(helpArray.unDuplicate());
 });
 	*/
