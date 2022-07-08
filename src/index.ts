@@ -1,4 +1,4 @@
-type key = string | number | symbol;
+type Key = string | number | symbol;
 
 /**
  * Returns true if the predicate function returns true for all elements in a collection and false otherwise.
@@ -53,8 +53,8 @@ export const countOccurrences = <T>(array: T[], value: T) =>
  * helpArray.fromEntries([['a', 1], ['b', 2]])
  * // => { 'a': 1, 'b': 2 }
  */
-export const fromEntries = <T>(pairs: [key, T][]): Record<key, T> => {
-	const result: Record<key, T> = {};
+export const fromEntries = <T>(pairs: Array<[Key, T]>): Record<Key, T> => {
+	const result: Record<Key, T> = {};
 	if (!pairs) return result;
 	for (const pair of pairs) result[pair[0]] = pair[1];
 	return result;
@@ -256,7 +256,10 @@ export const slice = <T>(array: T[], start = 0, stop = array.length): T[] => {
 /**
  * Sort array by a category.
  */
-export const sortBy = <T>(array: Record<key, T>[], p: key): Record<key, T>[] =>
+export const sortBy = <T extends Record<Key, any>>(
+	array: T[],
+	p: keyof T
+): T[] =>
 	[...array].sort((a, b) => (a[p] > b[p] ? 1 : a[p] < b[p] ? -1 : 0));
 
 /**
