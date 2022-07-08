@@ -79,29 +79,22 @@ export const deepFlatten = <T>(array: T[]): T[] =>
 	array.flatMap((v) => (Array.isArray(v) ? deepFlatten(v) : v));
 
 /**
- * Group items by common key and return an object of items grouped by key.
+ * Group items by common key and return an map of items grouped by key.
  */
-export const groupMap = <T>(
-	array: Record<key, T>[],
-	fn: (arg0: Record<key, T>) => key
-): Record<key, {items: Record<key, T>[]}> => {
-	const out: Record<key, {items: Record<key, T>[]}> = {};
-	for (const item of array) {
-		const key = fn(item);
-		out[key] = out[key] || {key, items: []};
-		out[key].items.push(item);
-	}
-
-	return out;
-};
-
+export const groupMap = <T>(array: T[], key: keyof T) =>
+	array.reduce(
+		(entryMap, item) =>
+			entryMap.set(item[key], [...(entryMap.get(item[key]) || []), item]),
+		new Map()
+	);
 /**
  * Group items by common key and return an array of groups.
  */
-export const group = <T>(
-	array: Record<key, T>[],
-	fn: (arg0: Record<key, T>) => key
-): {items: Record<key, T>[]}[] => Object.values(groupMap(array, fn));
+export const group = <T>(array: T[], predicate: (v: T) => string) =>
+	array.reduce((acc, value) => {
+		(acc[predicate(value)] ||= []).push(value);
+		return acc;
+	}, {} as {[key: string]: T[]});
 
 /**
  * Gets the first element of `array`.
