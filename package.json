@@ -1,6 +1,6 @@
 {
 	"name": "help-array",
-	"version": "0.1.1",
+	"version": "2.0.0",
 	"description": "TS package to help dealing with array",
 	"main": "dist/index.js",
 	"module": "./dist/index.mjs",
