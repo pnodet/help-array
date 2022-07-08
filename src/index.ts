@@ -25,10 +25,10 @@ export const prepend = <T>(array: T[], value: T) =>
 	array ? (array.unshift(value), array) : [value];
 
 /**
- * Returns the average of two or more numerical values.
+ * Returns the average of an array.
  */
-export const average = (...nums: number[]) =>
-	nums.reduce((acc, value) => acc + value, 0) / nums.length;
+export const average = (array: number[]) =>
+	[...array].reduce((acc, value) => acc + value, 0) / array.length;
 
 /**
  * Converts a non-array value into array.
@@ -271,10 +271,16 @@ export const toChunks = <T>(array: T[], size = 1): T[][] => {
 /**
  * Converts the elements that don’t have commas or double quotes to strings with comma-separated values.
  */
-export const toCSV = <T extends []>(array: T[], delimiter = ','): string =>
+export const toCSV = <T extends any[]>(array: T[], delimiter = ','): string =>
 	array.map((v) => v.map((x) => `"${x}"`).join(delimiter)).join('\n');
 
 /**
  * Remove duplicate items from an array.
  */
 export const unDuplicate = <T>(array: T[]) => [...new Set(array)];
+
+/**
+ * Get the sum of an array of numbers
+ */
+export const sum = (array: number[]) =>
+	[...array].reduce((total, value) => total + value, 0);
