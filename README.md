@@ -3,7 +3,7 @@
 > TS package to help dealing with array
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
-[![GitHub workflow status](https://img.shields.io/github/workflow/status/pnxdxt/help-array/CI)](https://github.com/pnxdxt/help-array)
+[![GitHub workflow status](https://img.shields.io/github/workflow/status/pnxdxt/help-array/CI)](https://github.com/pnxdxt/help-array/CI)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/help-array)](https://bundlephobia.com/package/help-array)
 [![npm downloads](https://img.shields.io/npm/dt/help-array)](https://www.npmjs.com/package/help-array)
 
