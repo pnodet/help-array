@@ -9,8 +9,26 @@
 
 ## Install
 
+```shell
+npm install help-array
 ```
-$ npm install help-array
+
+```shell
+yarn add help-array
+```
+
+## Usage
+
+```js
+import * as helpArray from 'help-array';
+
+helpArray.all([1, 2, 3], (element) => typeof element === 'string');
+//=> false
+
+import {all} from 'help-array';
+
+all(['1', '2', '3'], (element) => typeof element === 'string');
+//=> true
 ```
 
 ## Import
@@ -32,18 +50,6 @@ If the package is used in an async context, you could use [`await import(…)`](
 **You also need to make sure you're on the latest minor version of Node.js. At minimum Node.js 12.20, 14.14, or 16.0.**
 
 Read more here: [sindresorhus/esm-package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
-
-## Usage
-
-```js
-import {all} from 'help-array';
-
-helpArray.all([1, 2, 3], (element) => typeof element === 'string');
-//=> false
-
-helpArray.all(['1', '2', '3'], (element) => typeof element === 'string');
-//=> true
-```
 
 ## Functions
 
@@ -90,6 +96,8 @@ helpArray.all(['1', '2', '3'], (element) => typeof element === 'string');
 `slice` : Creates a slice of `array` from `start` up to, but not including, `end`.
 
 `sortBy` : Sort array by a category.
+
+`sum` : Get the sum of an array of numbers
 
 `toChunks` : Split an array into chunks.
 
